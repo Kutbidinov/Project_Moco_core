@@ -18,16 +18,17 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
-from menu.views import HomeView, CofeeView, CoffeesView, ContactView, AboutView, BlogView
+from menu.views import HomeView,  CoffeesView, ContactView, AboutView, PublicationView, CoffeeDetailView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', HomeView.as_view()),
-    path('cofee/', CofeeView.as_view()),
     path('coffees/', CoffeesView.as_view()),
     path('contact/', ContactView.as_view()),
     path('about/', AboutView.as_view()),
-    path('blog/', BlogView.as_view()),
+    path('blog/', PublicationView.as_view()),
+    path('coffee/<int:pk>/', CoffeeDetailView.as_view(), name='coffee_detail_url' ),
+
 
 ]
 

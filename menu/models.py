@@ -11,4 +11,12 @@ class Coffees(models.Model):
     is_alcocol = models.BooleanField()
 
 
+class Publication(models.Model):
+    title = models.CharField(max_length=200)
+    short_description = models.TextField(max_length=200)
+    description = models.TextField()
+    image = models.ImageField()
+    created_date = models.DateField()
+
+
 
