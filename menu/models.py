@@ -10,6 +10,10 @@ class Coffees(models.Model):
     image = models.ImageField()
     is_alcocol = models.BooleanField()
 
+    class Meta:
+        verbose_name_plural = 'Кофе'
+        verbose_name = 'Кофе'
+
 
 class Publication(models.Model):
     title = models.CharField(max_length=200)
@@ -17,6 +21,11 @@ class Publication(models.Model):
     description = models.TextField()
     image = models.ImageField()
     created_date = models.DateField()
+
+    class Meta:
+        verbose_name_plural = 'Публикации'
+        verbose_name = 'Публикация'
+
 
 
 
