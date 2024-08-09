@@ -18,21 +18,18 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
-from menu.views import HomeView,  CoffeesView, ContactView, AboutView, PublicationView, CoffeeDetailView
+from menu.views import home_view,  CoffeesView, ContactView, AboutView, PublicationView, CoffeeDetailView, BlogDetailView, client_contact_create_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', HomeView.as_view()),
-    path('coffees/', CoffeesView.as_view()),
-    path('contact/', ContactView.as_view()),
-    path('about/', AboutView.as_view()),
-    path('blog/', PublicationView.as_view()),
+    path('home/', home_view, name='home_detail_url'),
+    path('coffees/', CoffeesView.as_view(), name='coffees_list'),
+    path('contact/', ContactView.as_view(), name='contact_list'),
+    path('about/', AboutView.as_view(), name='about_list'),
+    path('blog/', PublicationView.as_view(), name='publication_list'),
+    path('blog/<int:pk>/', BlogDetailView.as_view(), name='publication-detail'),
     path('coffee/<int:pk>/', CoffeeDetailView.as_view(), name='coffee_detail_url' ),
-
-
+    path('home/client-contact-create/', client_contact_create_view),
 ]
 
-
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-

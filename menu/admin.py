@@ -1,5 +1,5 @@
 from django.contrib import admin
-from menu.models import Coffees
+from menu.models import Coffees, Feedback, MokkoContact, ClientContact, NameVerbose
 from menu.models import Publication
 
 # Register your models here.
@@ -12,5 +12,30 @@ class CoffeesAdmin(admin.ModelAdmin):
 
 @admin.register(Publication)
 class BlogAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['title']
 
+
+@admin.register(Feedback)
+class FeedbackAdmin(admin.ModelAdmin):
+    list_display = ['full_name']
+
+
+@admin.register(MokkoContact)
+class MokkoContactAdmin(admin.ModelAdmin):
+    list_display = ('email', 'phone')
+
+
+@admin.register(ClientContact)
+class ClientContactAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_change_permission(self, request, obj=None):
+        return False
+
+
+@admin.register(NameVerbose)
+class NameVerbose(admin.ModelAdmin):
+    pass
